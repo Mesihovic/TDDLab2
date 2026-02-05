@@ -1,22 +1,13 @@
-using System;
-
 namespace TicketBookingCore
 {
     public class TicketBookingRequestProcessor
     {
-        public TicketBookingResponse Book(TicketBookingRequest request)
-        {
-            if (request is null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+        private readonly ITicketBookingRepository _ticketBookingRepository;
 
-            return new TicketBookingResponse
-            {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email
-            };
+        public TicketBookingRequestProcessor(
+            ITicketBookingRepository ticketBookingRepository)
+        {
+            _ticketBookingRepository = ticketBookingRepository;
         }
     }
 }
