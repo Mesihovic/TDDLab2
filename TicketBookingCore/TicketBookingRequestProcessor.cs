@@ -2,7 +2,7 @@ namespace TicketBookingCore
 {
     public class TicketBookingRequestProcessor
     {
-        internal TicketBookingResponse Book(TicketBookingRequest request)
+        public TicketBookingResponse Book(TicketBookingRequest request)
         {
             return new TicketBookingResponse
             {
