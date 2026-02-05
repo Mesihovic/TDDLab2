@@ -1,4 +1,4 @@
-namespace TicketBookingCore.Tests
+namespace TicketBookingCore
 {
     public class TicketBookingRequestProcessor
     {
