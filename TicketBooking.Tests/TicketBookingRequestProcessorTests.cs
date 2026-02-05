@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace TicketBookingCore.Tests
@@ -25,22 +26,39 @@ namespace TicketBookingCore.Tests
             Assert.Equal(request.LastName, response.LastName);
             Assert.Equal(request.Email, response.Email);
         }
-        
-
 
         [Fact]
         public void ShouldThrowExceptionIfRequestIsNull()
-{
-           // Arrange
-           var processor = new TicketBookingRequestProcessor();
+        {
+            // Arrange
+            var processor = new TicketBookingRequestProcessor();
 
-           // Act
-           var exception = Assert.Throws<ArgumentNullException>(() =>
-           processor.Book(null));
+            // Act
+            var exception = Assert.Throws<ArgumentNullException>(() =>
+                processor.Book(null));
 
-           // Assert
-           Assert.Equal("request", exception.ParamName);
-       }
-            
-      }
+            // Assert
+            Assert.Equal("request", exception.ParamName);
+        }
+
+        [Fact]
+        public void ShouldSaveToDatabase()
+        {
+            // Arrange
+            var processor = new TicketBookingRequestProcessor();
+
+            var request = new TicketBookingRequest
+            {
+                FirstName = "Mersiha",
+                LastName = "Mesihovic",
+                Email = "m.mesihovic@@gmail.comcom"
+            };
+
+            // Act
+            TicketBookingResponse response = processor.Book(request);
+
+            // Assert
+            Assert.NotNull(response);
+        }
     }
+}
